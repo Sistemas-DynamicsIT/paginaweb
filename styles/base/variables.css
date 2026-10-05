@@ -1,0 +1,70 @@
+/* design tokens */
+
+:root {
+  /* color palette */
+  --primary-blue: #033773;
+  --medium-blue: #033773;
+  --light-blue: #033773;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* grayscale */
+  --gray-50: #f4f4f4;
+  --gray-100: #f7f7f7;
+  --gray-200: #eaeaea;
+  --gray-300: #d9d9d9;
+  --gray-400: #b7b7b7;
+  --gray-500: #8c8c8c;
+  --gray-600: #666666;
+  --gray-700: #4b4b4b;
+  --gray-800: #303030;
+  --gray-900: #1a1a1a;
+
+  /* core */
+  --color-primary: var(--primary-blue);
+  --color-secondary: var(--medium-blue);
+  --color-accent: var(--light-blue);
+
+  /* states */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--light-blue);
+
+  /* surface */
+  --color-background: var(--white);
+  --color-surface: var(--gray-50);
+  --color-border: var(--gray-200);
+  --color-divider: var(--gray-300);
+  --section-background: var(--white);
+  --section-background-muted: var(--gray-50);
+  --hero-gradient-light: linear-gradient(135deg, #ffffff 0%, #e8f6f8 55%, #f4f4f4 100%);
+  --hero-gradient-brand: linear-gradient(135deg, #033773 0%, #0688b3 50%, #033773 100%);
+
+  /* shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-none: none;
+}
+
+/* dark mode */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surface & Borders */
+    --color-background: var(--gray-900);
+    --color-surface: var(--gray-800);
+    --color-border: var(--gray-700);
+    --color-divider: var(--gray-600);
+
+    /* Text */
+    --color-text-primary: var(--gray-50);
+    --color-text-secondary: var(--gray-300);
+    --color-text-muted: var(--gray-400);
+    --color-text-inverse: var(--gray-900);
+  }
+}

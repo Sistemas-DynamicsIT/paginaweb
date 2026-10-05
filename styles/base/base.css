@@ -1,0 +1,217 @@
+/* Base CSS - Variables and Fonts */
+
+@import './fonts.min.css';
+@import './variables.min.css';
+
+/* Reset and basic global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary, #333);
+  font-family:
+    'Open Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.hero {
+  width: 100%;
+  min-height: 850px;
+  display: flex;
+  align-items: center;
+  padding: 3.75rem 1.25rem;
+  background: var(--hero-gradient-brand);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle logo in the hero background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./../../assets/icons/ui/dynamics/logo-black.png');
+  background-repeat: no-repeat;
+  background-size: 115% auto;
+  background-position: center;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 75rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .hero__content {
+    padding: 0 1.5rem;
+  }
+}
+
+.hero__text {
+  min-width: 0;
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero__title {
+  margin-bottom: 1.25rem;
+  color: var(--white);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+}
+
+.hero__description {
+  margin-bottom: 1.875rem;
+  color: var(--white);
+  max-width: 48rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding: 2rem 1.25rem;
+  }
+
+  .hero::before {
+    background-size: 150% auto;
+  }
+
+  .hero__title {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero__description {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero {
+    min-height: clamp(34rem, calc(100vh - 5rem), 42rem);
+    padding: 2.5rem 1.5rem;
+  }
+
+  .hero::before {
+    background-size: 130% auto;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 5vw, 3.25rem);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1600px) {
+  .hero {
+    min-height: clamp(34rem, calc(100vh - 5rem), 48rem);
+    padding: clamp(2rem, 4vh, 3rem) 1.25rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.75rem, 4vw, 3.5rem);
+  }
+}
+
+/* Containers */
+.max-w-7xl {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.space-x-8 > * + * {
+  margin-left: 2rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:space-x-10 > * + * {
+    margin-left: 2.5rem;
+  }
+}
+
+/* Heroes: match the homepage hero background (gradient + logo), without decorative shapes */
+.hero-shape-container,
+.hero-shapes {
+  display: none;
+}
+
+.hero-banner {
+  background: var(--hero-gradient-brand);
+}
+
+.hero-banner::after {
+  display: none;
+}
+
+.hero-banner-image {
+  visibility: hidden;
+}

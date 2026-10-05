@@ -1,0 +1,108 @@
+/* footer.css - no font sizing */
+footer {
+  background-color: #333;
+  color: #ccc;
+  padding: 1rem 0;
+  font-family:
+    'Open Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+footer > div {
+  max-width: 75rem; /* 1200px */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+footer > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer > div > div > div {
+  flex: 1 1 180px;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+footer > div > div:nth-child(-n + 2),
+footer > div > div:nth-child(-n + 2) * {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Column headings */
+footer h4 {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer li {
+  margin-bottom: 0.25rem;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
+
+footer > div > div:last-child {
+  border-top: 1px solid #555;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer > div > div:last-child > div {
+  flex: none;
+  margin: 0;
+  color: #999;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+footer svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.footer-partner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-partner .footer-partner__logo {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0;
+  flex: none;
+}
+
+footer > div > div > div > .footer-partner > .footer-partner__name {
+  font-size: 1rem;
+}
