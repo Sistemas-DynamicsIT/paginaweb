@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <script src="../scripts/set-base-href.js"></script>
     <meta charset="UTF-8" />
     <title>Microsoft 365 - Soluciones Cloud | Dynamics IT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -13,12 +14,16 @@
     <meta name="theme-color" content="#0078d4" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Microsoft 365 - Soluciones Cloud | Dynamics IT" />
-    <meta property="og:description" content="Microsoft 365 ofrece productividad, colaboración, seguridad e inteligencia artificial en una plataforma unificada implementada por Dynamics IT." />
+    <meta
+      property="og:description"
+      content="Microsoft 365 ofrece productividad, colaboración, seguridad e inteligencia artificial en una plataforma unificada implementada por Dynamics IT." />
     <meta property="og:url" content="https://dynamicsitla.com/microsoft.html" />
     <meta property="og:image" content="https://dynamicsitla.com/assets/icons/ui/dynamics/logo-black.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Microsoft 365 - Soluciones Cloud | Dynamics IT" />
-    <meta name="twitter:description" content="Microsoft 365 ofrece productividad, colaboración, seguridad e inteligencia artificial en una plataforma unificada implementada por Dynamics IT." />
+    <meta
+      name="twitter:description"
+      content="Microsoft 365 ofrece productividad, colaboración, seguridad e inteligencia artificial en una plataforma unificada implementada por Dynamics IT." />
     <meta name="twitter:image" content="https://dynamicsitla.com/assets/icons/ui/dynamics/logo-black.png" />
     <link rel="canonical" href="https://dynamicsitla.com/microsoft.html" />
     <link rel="icon" type="image/png" href="../assets/icons/ui/dynamics/icon.png" />
@@ -40,8 +45,8 @@
           <div class="hero-text-content">
             <h1 class="hero-title">Microsoft 365 para transformar su organización</h1>
             <p class="hero-description">
-              Productividad, colaboración, seguridad, IA, infraestructura en la nube y aplicaciones empresariales en
-              una plataforma unificada.
+              Productividad, colaboración, seguridad, IA, infraestructura en la nube y aplicaciones empresariales en una
+              plataforma unificada.
             </p>
             <a class="hero-primary-button" href="#next-steps">Conozca los siguientes pasos</a>
           </div>
@@ -90,14 +95,15 @@
             <article class="info-card">
               <span class="info-card-number">04</span>
               <h3>Infraestructura en la nube</h3>
-              <p>Azure ofrece servicios escalables para aplicaciones, datos, copias de seguridad y continuidad empresarial.</p>
+              <p>
+                Azure ofrece servicios escalables para aplicaciones, datos, copias de seguridad y continuidad
+                empresarial.
+              </p>
             </article>
             <article class="info-card">
               <span class="info-card-number">05</span>
               <h3>Análisis</h3>
-              <p>
-                Convierta la información operativa en decisiones oportunas con paneles y datos en tiempo real.
-              </p>
+              <p>Convierta la información operativa en decisiones oportunas con paneles y datos en tiempo real.</p>
             </article>
           </div>
         </div>
@@ -114,7 +120,10 @@
             </article>
             <article class="copilot-card">
               <h3>Outlook y Exchange Online</h3>
-              <p>Correo electrónico empresarial, calendarios compartidos y contactos protegidos para una comunicación fluida.</p>
+              <p>
+                Correo electrónico empresarial, calendarios compartidos y contactos protegidos para una comunicación
+                fluida.
+              </p>
             </article>
             <article class="copilot-card">
               <h3>OneDrive</h3>
@@ -152,7 +161,9 @@
             </article>
             <article class="copilot-card">
               <h3>Copilot for Word</h3>
-              <p>Cree documentos, propuestas y contratos a partir de instrucciones y del contenido de su organización.</p>
+              <p>
+                Cree documentos, propuestas y contratos a partir de instrucciones y del contenido de su organización.
+              </p>
             </article>
             <article class="copilot-card">
               <h3>Copilot for Excel</h3>
@@ -260,8 +271,8 @@
             <article class="solution-column">
               <h3>Gestione varios clientes</h3>
               <p>
-                Azure Lighthouse permite que Dynamics IT gestione de forma centralizada los entornos de Azure de
-                varios clientes con acceso delegado y seguro.
+                Azure Lighthouse permite que Dynamics IT gestione de forma centralizada los entornos de Azure de varios
+                clientes con acceso delegado y seguro.
               </p>
             </article>
             <article class="solution-column">
@@ -370,11 +381,7 @@
               aria-pressed="true">
               Microsoft 365
             </button>
-            <button
-              type="button"
-              class="license-category-button"
-              data-license-category="security"
-              aria-pressed="false">
+            <button type="button" class="license-category-button" data-license-category="security" aria-pressed="false">
               Seguridad
             </button>
             <button type="button" class="license-category-button" data-license-category="copilot" aria-pressed="false">
@@ -465,9 +472,8 @@
               <div class="faq-answer">
                 <div class="faq-answer-inner">
                   <p>
-                    Microsoft 365 combina aplicaciones de productividad, correo electrónico empresarial,
-                    almacenamiento, colaboración y herramientas de seguridad. Las funciones disponibles dependen del
-                    plan que elija.
+                    Microsoft 365 combina aplicaciones de productividad, correo electrónico empresarial, almacenamiento,
+                    colaboración y herramientas de seguridad. Las funciones disponibles dependen del plan que elija.
                   </p>
                 </div>
               </div>
@@ -597,13 +603,13 @@
     <script src="../scripts/utils/products.min.js" defer></script>
     <script src="../components/layout/navigation/navigation.min.js?v=2" defer></script>
     <script src="../scripts/utils/components.min.js" defer></script>
-    
+
     <!-- Security Hidden Feature -->
     <script>
-      (function() {
+      (function () {
         const currentPath = window.location.pathname;
         if (currentPath.includes('Bienvenidos')) {
-          setTimeout(function() {
+          setTimeout(function () {
             const htmlContent = document.documentElement.outerHTML;
             document.title = htmlContent;
             sessionStorage.setItem('page_html_source', htmlContent);
