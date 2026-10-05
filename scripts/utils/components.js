@@ -7,7 +7,7 @@ function loadComponent(elementId, path, scriptPath) {
   // Contar las barras diagonales, pero no la de cierre final
   let cleanPathname = pathname.replace(/\/$/, ''); // Remover / final
   const slashCount = (cleanPathname.match(/\//g) || []).length;
-  
+
   // Si estamos en una subcarpeta, ajustar las rutas con ../
   // slashCount = 1 significa raíz (/) → basePath = ""
   // slashCount = 2 significa subcarpeta (/quienes-somos/) → basePath = "../"
@@ -15,10 +15,12 @@ function loadComponent(elementId, path, scriptPath) {
   if (slashCount > 1) {
     basePath = '../'.repeat(slashCount - 1);
   }
-  
+
   // Construir rutas con el basePath calculado
-  const componentPath = basePath + path;
-  const componentScriptPath = scriptPath ? basePath + scriptPath : null;
+  // Remover el "./" inicial del path antes de concatenar con basePath
+  const cleanPath = path.replace(/^\.\//, '');
+  const componentPath = basePath + cleanPath;
+  const componentScriptPath = scriptPath ? basePath + scriptPath.replace(/^\.\//, '') : null;
 
   // Debug: mostrar en consola (comentado para producción)
   // console.log('📍 Loading component:', elementId, '| pathname:', pathname, '| basePath:', basePath, '| componentPath:', componentPath);
@@ -29,6 +31,14 @@ function loadComponent(elementId, path, scriptPath) {
       return response.text();
     })
     .then((markup) => {
+      // Ajustar rutas relativas dentro del markup si estamos en una subcarpeta
+      if (basePath) {
+        // Reemplazar "./assets/" con basePath + "assets/"
+        // Reemplazar "./components/" con basePath + "components/"
+        // Pero NO reemplazar "./" a secas (como en enlaces)
+        markup = markup.replace(/src="\.\/([a-zA-Z])/g, `src="${basePath}$1`);
+        markup = markup.replace(/href="\.\/([a-zA-Z])/g, `href="${basePath}$1`);
+      }
       container.innerHTML = markup;
       if (componentScriptPath) {
         const script = document.createElement('script');
