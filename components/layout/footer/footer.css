@@ -92,17 +92,21 @@ footer svg {
 
 .footer-partner {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .footer-partner .footer-partner__logo {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   margin-right: 0;
   flex: none;
 }
 
 footer > div > div > div > .footer-partner > .footer-partner__name {
-  font-size: 1rem;
+  font-size: 0.875rem;
+  color: #ccc;
+  font-weight: 500;
 }
