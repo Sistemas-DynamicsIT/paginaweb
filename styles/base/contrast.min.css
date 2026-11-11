@@ -5,9 +5,9 @@
 ){--ink:#000000}:is(
 .overview-tab.active,.about-primary-button,.job-apply-btn,.license-category-button.is-active,.ecosystem-section,.ecosystem-card,.case-studies-container,.comparison-table th,.process-step
 ){--ink:#ffffff}.case-modal-close,.values-grid article,.values-grid article :is(h3,p,span){color:#000}
-main#main:not(.contact-page)>section:nth-of-type(3),main#main:not(.contact-page)>section:nth-of-type(6),main#main:not(.contact-page)>section:nth-of-type(9),main#main:not(.contact-page)>section:nth-of-type(10),main#main:not(.contact-page)>section:nth-of-type(13){--ink:#000;background-color:#fff}
+main#main:not(.contact-page)>section:nth-of-type(3),main#main:not(.contact-page)>section:nth-of-type(6),main#main:not(.contact-page)>section:nth-of-type(9),main#main:not(.contact-page)>section:nth-of-type(13){--ink:#000;background-color:#fff}
 main#main:not(.contact-page)>section:nth-of-type(4),main#main:not(.contact-page)>section:nth-of-type(8),main#main:not(.contact-page)>section:nth-of-type(11),main#main:not(.contact-page)>section:nth-of-type(15){--ink:#fff;background-color:#033773}
-main#main:not(.contact-page)>section:nth-of-type(5),main#main:not(.contact-page)>section:nth-of-type(7),main#main:not(.contact-page)>section:nth-of-type(12),main#main:not(.contact-page)>section:nth-of-type(14){--ink:#000;background-color:#f4f4f4}
+main#main:not(.contact-page)>section:nth-of-type(5),main#main:not(.contact-page)>section:nth-of-type(7),main#main:not(.contact-page)>section:nth-of-type(10),main#main:not(.contact-page)>section:nth-of-type(12),main#main:not(.contact-page)>section:nth-of-type(14){--ink:#000;background-color:#f4f4f4}
 main#main.contact-page>section:nth-of-type(1),main#main.contact-page>section:nth-of-type(4){--ink:#000;background-color:#fff}
 main#main.contact-page>section:nth-of-type(2){--ink:#fff;background-color:#033773}
 main#main.contact-page>section:nth-of-type(3),main#main.contact-page>section:nth-of-type(5){--ink:#000;background-color:#f4f4f4}
@@ -16,4 +16,4 @@ main#main>section#evolution .carousel-btn{background-color:rgba(3,55,115,.06);bo
 main#main>section#evolution .carousel-btn:hover:not(:disabled){background-color:var(--primary-blue);border-color:var(--primary-blue);color:#fff}
 main#main>section#evolution .carousel-btn:focus-visible{outline-color:var(--primary-blue)}
 main#main>section#evolution .carousel-dot{background-color:rgba(3,55,115,.28)}
-main#main>section#evolution .carousel-dot.active{background-color:var(--primary-blue)}
+main#main>section#evolution .carousel-dot.active{background-color:var(--primary-blue)}main#main>section#success-stories .success-stories-link{color:#000}main#main>section#industries,main#main>section#next-steps{--ink:#000;background-color:#f4f4f4}main#main>section#success-stories{--ink:#000;background-color:#fff}main#main>section#innovation{--ink:#fff;background-color:#033773}main#main>section#services{--ink:#000;background-color:#f4f4f4}main#main>section#ecosystem{--ink:#fff;background-color:#033773}

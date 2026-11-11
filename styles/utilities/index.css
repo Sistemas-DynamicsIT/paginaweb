@@ -373,6 +373,7 @@
   padding: 1rem 0;
 }
 .feature-accordion-header {
+  position: relative;
   width: 100%;
   text-align: left;
   background: none;
@@ -382,16 +383,29 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  transition: background-color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
-.feature-accordion-header:hover {
-  background-color: #f9fafb;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
+.feature-accordion-header:hover,
+.feature-accordion-header:focus-visible {
+  color: var(--primary-blue);
+  transform: translateX(0.35rem);
+}
+.feature-accordion-header:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 3px;
+}
+.feature-accordion-open .feature-accordion-header {
+  color: var(--primary-blue);
 }
 .feature-accordion-title {
   color: #1f2937;
   margin: 0;
+  transition: color 0.2s ease;
+}
+.feature-accordion-header:hover .feature-accordion-title,
+.feature-accordion-header:focus-visible .feature-accordion-title,
+.feature-accordion-open .feature-accordion-title {
+  color: var(--primary-blue);
 }
 .feature-indicator {
   display: inline-block;
@@ -487,16 +501,68 @@
   margin: 0 auto;
   padding: 0 1rem;
 }
+.success-stories-section .case-studies-grid-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
 .case-studies-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
 }
-@media (min-width: 1024px) {
-  .case-studies-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+.success-stories-section .case-studies-grid {
+  grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
+  justify-items: stretch;
+}
+.success-stories-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.success-stories-link:hover,
+.success-stories-link:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+.success-stories-link:focus-visible {
+  outline: 3px solid var(--primary-blue);
+  outline-offset: 3px;
+}
+.success-stories-link .case-studies-button-icon {
+  transition: transform 0.2s ease;
+}
+.success-stories-link:hover .case-studies-button-icon,
+.success-stories-link:focus-visible .case-studies-button-icon {
+  transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .success-stories-link,
+  .success-stories-link .case-studies-button-icon {
+    transition: none;
+  }
+}
+.success-stories-section .case-studies-card {
+  width: min(100%, 38rem);
+  justify-self: end;
+}
+@media (max-width: 767px) {
+  .success-stories-section .case-studies-grid {
+    grid-template-columns: 1fr;
+  }
+  .success-stories-section .case-studies-card {
+    justify-self: stretch;
   }
 }
 .case-studies-text-column {
@@ -668,13 +734,13 @@
 
 main > section:nth-child(3),
 main > section:nth-child(6),
-main > section:nth-child(9) {
+main > section:nth-child(10) {
   color: #000000;
 }
 
 main > section:nth-child(3) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, span, strong, small, label, button),
 main > section:nth-child(6) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, span, strong, small, label, button),
-main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, span, strong, small, label, button) {
+main > section:nth-child(10) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, span, strong, small, label, button) {
   color: #000000;
 }
 .next-steps-icon {
@@ -696,6 +762,7 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
 .intro-section,
 .ecosystem-section,
 .industries-section,
+.success-stories-section,
 .innovation-section {
   padding: 4rem 1rem;
 }
@@ -852,28 +919,41 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   padding-bottom: 6rem;
 }
 
-.industries-section .case-studies-container {
-  margin-top: 4rem;
+.success-stories-section {
+  background: var(--section-background);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.success-stories-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.success-stories-section .case-studies-container {
+  max-width: 80rem;
+  margin: 0 auto;
   padding: 3rem 2rem 4rem;
   border-top: none;
   background: #0688b3;
   border-radius: 1rem;
 }
 
-.industries-section .case-studies-container .section-eyebrow,
-.industries-section .case-studies-container .section-heading {
+.success-stories-section .case-studies-container .section-eyebrow,
+.success-stories-section .case-studies-container .section-heading {
   color: #ffffff;
 }
 
-.industries-section .case-studies-container .case-studies-text-column {
+.success-stories-section .case-studies-container .case-studies-text-column {
   color: #ffffff;
 }
 
-.industries-section .case-studies-container .case-studies-description {
+.success-stories-section .case-studies-container .case-studies-description {
   color: #e6f4f8;
 }
 
-.industries-section .case-studies-container .case-studies-button {
+.success-stories-section .case-studies-container .case-studies-button {
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.5);
 }
@@ -892,8 +972,8 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
 }
 
 .industry-item {
+  position: relative;
   padding: 1rem 0;
-  border-bottom: 1px solid #b8d9dd;
   border: none;
   background: transparent;
   color: var(--gray-800);
@@ -901,19 +981,36 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   cursor: pointer;
   text-align: left;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   padding-bottom: 1rem;
   padding-top: 0.5rem;
 }
 
+.industry-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0.5rem;
+  left: 0;
+  height: 2px;
+  background: var(--primary-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
 .industry-item:hover {
   color: var(--primary-blue);
-  border-bottom-color: var(--primary-blue);
+}
+
+.industry-item:hover::after,
+.industry-item:focus-visible::after,
+.industry-item.active::after {
+  transform: scaleX(1);
 }
 
 .industry-item.active {
   color: var(--primary-blue);
-  border-bottom: 2px solid var(--primary-blue);
 }
 
 .industry-name {
@@ -929,21 +1026,33 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   border-radius: 0.5rem;
   background: rgba(3, 55, 115, 0.05);
   padding: 1rem;
-  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+  animation: industryExpand 0.4s ease both;
 }
 
 .industry-description p {
   margin: 0;
 }
 
-@keyframes fadeIn {
+@keyframes industryExpand {
   from {
+    max-height: 0;
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-0.5rem);
   }
   to {
+    max-height: 20rem;
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-item,
+  .industry-item::after,
+  .industry-description {
+    animation: none;
+    transition: none;
   }
 }
 
@@ -958,16 +1067,69 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   color: #ffffff;
 }
 
-.innovation-list {
+.innovation-section .innovation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.innovation-section .innovation-heading {
+  width: 100%;
+}
+
+.innovation-section .innovation-list {
+  width: min(100%, 48rem);
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+  align-self: center;
   border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.innovation-list div {
+.innovation-list > div {
   display: flex;
   gap: 1.5rem;
   align-items: center;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.5rem;
+  animation: innovationItemReveal 0.5s ease both;
+  transition: background-color 0.25s ease, padding 0.25s ease, transform 0.25s ease;
+}
+
+.innovation-list > div:hover {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  transform: translateX(0.5rem);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.innovation-list > div:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.innovation-list > div:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.innovation-list > div:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.innovation-list > div:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+@keyframes innovationItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .innovation-list strong {
@@ -979,6 +1141,13 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .innovation-list > div {
+    animation: none;
+    transition: none;
+  }
 }
 
 .next-steps-section {
@@ -1024,6 +1193,7 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
   .intro-section,
   .ecosystem-section,
   .industries-section,
+  .success-stories-section,
   .innovation-section {
     padding: 3rem 1rem;
   }
@@ -1051,6 +1221,7 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
 
   .ecosystem-section,
   .industries-section,
+  .success-stories-section,
   .innovation-section,
   .next-steps-section {
     padding-top: 4.5rem;
@@ -1095,22 +1266,21 @@ main > section:nth-child(9) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, spa
     padding: 0.75rem;
   }
 
-  .industries-section .case-studies-container {
-    margin-top: 4rem;
+  .success-stories-section .case-studies-container {
     padding: 2rem 1.5rem 2.5rem;
   }
 }
-main > section:nth-child(7) {
+#industries {
   background-color: #f4f4f4;
 }
-main > section:nth-child(8) {
-  background-color: #033773;
-}
-main > section:nth-child(9) {
+#success-stories {
   background-color: #ffffff;
 }
-main > section:nth-child(10) {
+#innovation {
   background-color: #033773;
+}
+#next-steps {
+  background-color: #f4f4f4;
 }
 
 

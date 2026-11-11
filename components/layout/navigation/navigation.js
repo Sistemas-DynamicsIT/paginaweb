@@ -4,8 +4,13 @@
     if (!navigation) return;
 
     const tabBar = navigation.querySelector('.tab-bar-nav');
-    const links = [...navigation.querySelectorAll('a[href^="#"]')];
-    const sections = links.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const links = [...navigation.querySelectorAll('a[href*="#"]')].filter(
+      (link) => link.hash && (
+        link.getAttribute('href').startsWith('#') ||
+        (link.origin === window.location.origin && link.pathname === window.location.pathname)
+      )
+    );
+    const sections = links.map((link) => document.getElementById(link.hash.slice(1))).filter(Boolean);
 
     if (!tabBar || !sections.length) return;
 
@@ -37,7 +42,7 @@
       });
 
       links.forEach((link) => {
-        const isActive = link.getAttribute('href') === `#${activeSection.id}`;
+        const isActive = link.hash === `#${activeSection.id}`;
         link.classList.toggle('active-tab', isActive);
         if (isActive) {
           link.setAttribute('aria-current', 'location');
