@@ -68,3 +68,30 @@
     --color-text-inverse: var(--gray-900);
   }
 }
+
+/* Dark mode - extended component overrides */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+  .section-heading, .card-title, .modal-header-title, h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-primary);
+  }
+  .card-description, .modal-body-text, .modal-feature-desc, p {
+    color: var(--color-text-secondary);
+  }
+  .service-card, .modal-container, .next-steps-card, .location-card, .faq-card-inner, .achievement-card-inner {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+  .modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  a { color: var(--color-accent); }
+  input, textarea, select, button {
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+  }
+}

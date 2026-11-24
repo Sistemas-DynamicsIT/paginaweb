@@ -1,0 +1,12 @@
+{
+  "name": "paginaweb",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-minified.cjs"
+  },
+  "dependencies": {
+    "clean-css": "^5.3.3",
+    "terser": "^5.31.0"
+  }
+}

@@ -285,11 +285,14 @@
 }
 
 /* ===== FEATURES GRID ===== */
-.section-features .section-container {
+.feature-grid {
   display: flex;
   flex-wrap: wrap;
   margin-left: -12px;
   margin-right: -12px;
+  background-color: var(--primary-blue);
+  padding: 3rem 1.5rem;
+  border-radius: 0.75rem;
 }
 
 .feature-card {
@@ -1049,10 +1052,6 @@ main > section[data-surface='dark'] .about-primary-button {
 
 main > section[data-surface='dark'] .next-steps-card-link {
   color: #1d4ed8;
-}
-
-main > section[data-surface='dark'].section-features .section-container {
-  background-color: var(--primary-blue);
 }
 
 /* Utility class for centered section subtitles */

@@ -4,27 +4,39 @@
     <loc>https://dynamicsitla.com/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/about/</loc>
+    <loc>https://dynamicsitla.com/home/about/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/carear/</loc>
+    <loc>https://dynamicsitla.com/home/carear/</loc>
   </url>
   <url>
     <loc>https://dynamicsitla.com/contact/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/dynamics/</loc>
+    <loc>https://dynamicsitla.com/solutions/dynamics/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/microsoft/</loc>
+    <loc>https://dynamicsitla.com/solutions/microsoft/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/rmh/</loc>
+    <loc>https://dynamicsitla.com/solutions/azure/</loc>
   </url>
   <url>
-    <loc>https://dynamicsitla.com/stories/</loc>
+    <loc>https://dynamicsitla.com/solutions/rmh/</loc>
   </url>
   <url>
-  <loc>https://dynamicsitla.com/blog/</loc>
+    <loc>https://dynamicsitla.com/home/stories/</loc>
+  </url>
+  <url>
+    <loc>https://dynamicsitla.com/blog/</loc>
+  </url>
+  <url>
+    <loc>https://dynamicsitla.com/services/consulting/</loc>
+  </url>
+  <url>
+    <loc>https://dynamicsitla.com/services/implementation/</loc>
+  </url>
+  <url>
+    <loc>https://dynamicsitla.com/services/support/</loc>
   </url>
 </urlset>

@@ -961,9 +961,10 @@ main > section:nth-child(10) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, sp
 .industries-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem 6rem;
-  max-width: 500px;
+  gap: 5rem 10rem;
+  max-width: 800px;
   margin: 0 auto 2.5rem;
+  align-items: start;
 }
 
 .industry-item-wrapper {
@@ -1021,13 +1022,13 @@ main > section:nth-child(10) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, sp
   color: var(--gray-700);
   font-size: 0.95rem;
   line-height: 1.6;
-  padding: 1rem 0;
+  padding: 1rem;
   margin-top: 0.5rem;
   border-radius: 0.5rem;
   background: rgba(3, 55, 115, 0.05);
-  padding: 1rem;
-  overflow: hidden;
+  overflow: visible;
   animation: industryExpand 0.4s ease both;
+  box-sizing: border-box;
 }
 
 .industry-description p {
@@ -1038,12 +1039,10 @@ main > section:nth-child(10) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, sp
   from {
     max-height: 0;
     opacity: 0;
-    transform: translateY(-0.5rem);
   }
   to {
-    max-height: 20rem;
+    max-height: 50rem;
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
