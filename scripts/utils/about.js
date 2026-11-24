@@ -15,6 +15,7 @@ class AboutTabs {
   init() {
     this.initAboutTabs();
     this.initAccordions();
+    this.initFAQ();
   }
 
   initAboutTabs() {
@@ -129,10 +130,52 @@ class AboutTabs {
       }
     });
   }
+
+  initFAQ() {
+    const faqCards = document.querySelectorAll('.faq-card');
+
+    faqCards.forEach((card, index) => {
+      const button = card.querySelector('[data-faq-toggle]');
+      const answer = card.querySelector('.faq-answer');
+
+      if (button && answer) {
+        answer.id = answer.id || `about-faq-answer-${index + 1}`;
+        answer.setAttribute('role', 'region');
+        answer.setAttribute('aria-labelledby', button.id || `about-faq-button-${index + 1}`);
+        button.id = button.id || `about-faq-button-${index + 1}`;
+        button.type = 'button';
+        button.setAttribute('aria-controls', answer.id);
+        button.setAttribute('aria-expanded', 'false');
+        answer.setAttribute('aria-hidden', 'true');
+
+        button.addEventListener('click', () => {
+          const isActive = card.classList.contains('active');
+
+          faqCards.forEach((faqItem) => {
+            faqItem.classList.remove('active');
+            const faqButton = faqItem.querySelector('[data-faq-toggle]');
+            const faqAnswer = faqItem.querySelector('.faq-answer');
+            if (faqButton) {
+              faqButton.setAttribute('aria-expanded', 'false');
+            }
+            if (faqAnswer) {
+              faqAnswer.setAttribute('aria-hidden', 'true');
+            }
+          });
+
+          if (!isActive) {
+            card.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+            answer.setAttribute('aria-hidden', 'false');
+          }
+        });
+      }
+    });
+  }
 }
 
 // Initialize on the About page.
-if (document.querySelector('.overview-tabs-container')) {
+if (document.querySelector('.overview-tabs-container') || document.querySelector('.faq-grid')) {
   new AboutTabs();
 }
 
