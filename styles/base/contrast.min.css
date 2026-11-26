@@ -1,19 +1,116 @@
-:root{--ink:#000000}[data-surface=dark]{--ink:#ffffff}main>section:not(
-.hero-section,.hero,.section-hero,.section-hero-products,.section-hero-contact,.stories-hero
-) :is(h1,h2,h3,h4,h5,h6,p,li,span,strong,em,small,label,a,button,dt,dd,th,td,figcaption,blockquote,cite,summary,div,b,option):not(#_){color:var(--ink)}:is(
-.features-card,.next-steps-card,.career-card,.copilot-card,.solution-column,.license-card,.featured-case,.case-modal-content,.process-step-number,.secondary-contact-link,.culture-grid article,.team-testimonials figure,.success-grid article,.testimonials-grid figure,.case-studies-card,.case-modal-close,.values-grid article,.industry-list span,.commitment-list span,select,option
-){--ink:#000000}:is(
-.overview-tab.active,.about-primary-button,.job-apply-btn,.license-category-button.is-active,.ecosystem-section,.ecosystem-card,.case-studies-container,.comparison-table th,.process-step
-){--ink:#ffffff}.case-modal-close,.values-grid article,.values-grid article :is(h3,p,span){color:#000}
-main#main:not(.contact-page)>section:nth-of-type(3),main#main:not(.contact-page)>section:nth-of-type(6),main#main:not(.contact-page)>section:nth-of-type(9),main#main:not(.contact-page)>section:nth-of-type(13){--ink:#000;background-color:#fff}
-main#main:not(.contact-page)>section:nth-of-type(4),main#main:not(.contact-page)>section:nth-of-type(8),main#main:not(.contact-page)>section:nth-of-type(11),main#main:not(.contact-page)>section:nth-of-type(15){--ink:#fff;background-color:#033773}
-main#main:not(.contact-page)>section:nth-of-type(5),main#main:not(.contact-page)>section:nth-of-type(7),main#main:not(.contact-page)>section:nth-of-type(10),main#main:not(.contact-page)>section:nth-of-type(12),main#main:not(.contact-page)>section:nth-of-type(14){--ink:#000;background-color:#f4f4f4}
-main#main.contact-page>section:nth-of-type(1),main#main.contact-page>section:nth-of-type(4){--ink:#000;background-color:#fff}
-main#main.contact-page>section:nth-of-type(2){--ink:#fff;background-color:#033773}
-main#main.contact-page>section:nth-of-type(3),main#main.contact-page>section:nth-of-type(5){--ink:#000;background-color:#f4f4f4}
-main#main>section#evolution .section-eyebrow,main#main>section#evolution .section-heading,main#main>section#evolution .section-subtitle-centered,main#main>section#evolution .section-paragraph-centered{color:#111827}
-main#main>section#evolution .carousel-btn{background-color:rgba(3,55,115,.06);border-color:rgba(3,55,115,.25);color:var(--primary-blue)}
-main#main>section#evolution .carousel-btn:hover:not(:disabled){background-color:var(--primary-blue);border-color:var(--primary-blue);color:#fff}
-main#main>section#evolution .carousel-btn:focus-visible{outline-color:var(--primary-blue)}
-main#main>section#evolution .carousel-dot{background-color:rgba(3,55,115,.28)}
-main#main>section#evolution .carousel-dot.active{background-color:var(--primary-blue)}main#main>section#success-stories .success-stories-link{color:#000}main#main>section#industries,main#main>section#next-steps{--ink:#000;background-color:#f4f4f4}main#main>section#success-stories{--ink:#000;background-color:#fff}main#main>section#innovation{--ink:#fff;background-color:#033773}main#main>section#services{--ink:#000;background-color:#f4f4f4}main#main>section#ecosystem{--ink:#fff;background-color:#033773}
+/* Text contrast: use black text on white and gray backgrounds and white text on blue backgrounds (data-surface="dark"). Load this stylesheet after each page's other styles. */
+
+:root {
+  --ink: #000000;
+}
+
+/* Content section text (does not apply to heroes) */
+main
+  > section:not(
+    .hero-section,
+    .hero,
+    .section-hero,
+    .section-hero-products,
+    .section-hero-contact,
+    .stories-hero
+  )
+  :is(h1, h2, h3, h4, h5, h6, p, li, span, strong, em, small, label, a, button, dt, dd, th, td, figcaption, blockquote, cite, summary, div, b, option):not(#_) {
+  color: var(--ink);
+}
+
+/* Light cards in blue sections use dark text */
+:is(
+  .features-card, .next-steps-card, .career-card, .copilot-card, .solution-column,
+  .license-card, .featured-case, .case-modal-content, .process-step-number,
+  .secondary-contact-link, .culture-grid article, .team-testimonials figure,
+  .success-grid article, .testimonials-grid figure, .case-studies-card,
+  .case-modal-close, .values-grid article, .industry-list span, .commitment-list span, select, option,
+  .power-grid article, .why-us-grid article, .success-grid article, .insight-panel,
+  .faq-grid .faq-card, .job-card, .blog-card, .quick-channels-card, .impact-grid article, .expertise-grid article, .technology-grid article
+) {
+  --ink: #000000;
+}
+
+/* Blue elements in light sections use white text */
+:is(
+  .overview-tab.active, .about-primary-button, .job-apply-btn,
+  .license-category-button.is-active, .case-studies-container,
+  .comparison-table th
+) {
+  --ink: #ffffff;
+}
+
+
+.case-modal-close,
+.values-grid article,
+.values-grid article :is(h3, p, span) {
+  color: #000000;
+}
+
+
+
+
+
+
+
+main#main > section#evolution .section-eyebrow,
+main#main > section#evolution .section-heading,
+main#main > section#evolution .section-subtitle-centered,
+main#main > section#evolution .section-paragraph-centered {
+  color: #111827;
+}
+
+main#main > section#evolution .carousel-btn {
+  background-color: rgba(3, 55, 115, 0.06);
+  border-color: rgba(3, 55, 115, 0.25);
+  color: var(--primary-blue);
+}
+
+main#main > section#evolution .carousel-btn:hover:not(:disabled) {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+main#main > section#evolution .carousel-btn:focus-visible {
+  outline-color: var(--primary-blue);
+}
+
+main#main > section#evolution .carousel-dot {
+  background-color: rgba(3, 55, 115, 0.28);
+}
+
+main#main > section#evolution .carousel-dot.active {
+  background-color: var(--primary-blue);
+}
+
+main#main > section#success-stories .success-stories-link {
+  color: #000000;
+}
+
+/* ===== SECTION BACKGROUNDS =====
+   Each content section declares its colour with data-bg="white|blue|gray".
+   The colours cycle white -> blue -> gray in document order (set in the HTML),
+   so nothing here depends on classes, ids or :nth-of-type. Blue sections also
+   carry data-surface="dark" for the page stylesheets that key off it. */
+
+main > section[data-bg="white"] {
+  background-color: var(--section-background, #ffffff) !important;
+  --ink: #000000;
+}
+
+main > section[data-bg="blue"] {
+  background-color: var(--primary-blue, #033773) !important;
+  --ink: #ffffff;
+  color: var(--ink);
+}
+
+main > section[data-bg="gray"] {
+  background-color: var(--section-background-muted, #f4f4f4) !important;
+  --ink: #000000;
+}
+
+/* Sections nested inside another section take the parent's background and text colour */
+main section section {
+  background-color: transparent !important;
+}

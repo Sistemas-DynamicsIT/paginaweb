@@ -126,11 +126,6 @@
   background: var(--section-background-muted);
 }
 
-main#main > section#articulos {
-  --ink: #000;
-  background-color: var(--section-background-muted);
-}
-
 .blog-category-section {
   scroll-margin-top: 4rem;
 }

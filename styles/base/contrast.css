@@ -4,10 +4,6 @@
   --ink: #000000;
 }
 
-[data-surface='dark'] {
-  --ink: #ffffff;
-}
-
 /* Content section text (does not apply to heroes) */
 main
   > section:not(
@@ -28,7 +24,9 @@ main
   .license-card, .featured-case, .case-modal-content, .process-step-number,
   .secondary-contact-link, .culture-grid article, .team-testimonials figure,
   .success-grid article, .testimonials-grid figure, .case-studies-card,
-  .case-modal-close, .values-grid article, .industry-list span, .commitment-list span, select, option
+  .case-modal-close, .values-grid article, .industry-list span, .commitment-list span, select, option,
+  .power-grid article, .why-us-grid article, .success-grid article, .insight-panel,
+  .faq-grid .faq-card, .job-card, .blog-card, .quick-channels-card, .impact-grid article, .expertise-grid article, .technology-grid article
 ) {
   --ink: #000000;
 }
@@ -36,8 +34,8 @@ main
 /* Blue elements in light sections use white text */
 :is(
   .overview-tab.active, .about-primary-button, .job-apply-btn,
-  .license-category-button.is-active, .ecosystem-section, .ecosystem-card, .case-studies-container,
-  .comparison-table th, .process-step
+  .license-category-button.is-active, .case-studies-container,
+  .comparison-table th
 ) {
   --ink: #ffffff;
 }
@@ -49,73 +47,11 @@ main
   color: #000000;
 }
 
-main#main:not(.contact-page) > section:nth-of-type(3),
-main#main:not(.contact-page) > section:nth-of-type(6),
-main#main:not(.contact-page) > section:nth-of-type(9),
-main#main:not(.contact-page) > section:nth-of-type(13) {
-  --ink: #000000;
-  background-color: #ffffff;
-}
 
-main#main:not(.contact-page) > section:nth-of-type(4),
-main#main:not(.contact-page) > section:nth-of-type(8),
-main#main:not(.contact-page) > section:nth-of-type(11),
-main#main:not(.contact-page) > section:nth-of-type(15) {
-  --ink: #ffffff;
-  background-color: #033773;
-}
 
-main#main:not(.contact-page) > section:nth-of-type(5),
-main#main:not(.contact-page) > section:nth-of-type(7),
-main#main:not(.contact-page) > section:nth-of-type(10),
-main#main:not(.contact-page) > section:nth-of-type(12),
-main#main:not(.contact-page) > section:nth-of-type(14) {
-  --ink: #000000;
-  background-color: #f4f4f4;
-}
 
-main#main > section#industries,
-main#main > section#next-steps {
-  --ink: #000000;
-  background-color: #f4f4f4;
-}
 
-main#main > section#success-stories {
-  --ink: #000000;
-  background-color: #ffffff;
-}
 
-main#main > section#innovation {
-  --ink: #ffffff;
-  background-color: #033773;
-}
-
-main#main > section#services {
-  --ink: #000000;
-  background-color: #f4f4f4;
-}
-
-main#main > section#ecosystem {
-  --ink: #ffffff;
-  background-color: #033773;
-}
-
-main#main.contact-page > section:nth-of-type(1),
-main#main.contact-page > section:nth-of-type(4) {
-  --ink: #000000;
-  background-color: #ffffff;
-}
-
-main#main.contact-page > section:nth-of-type(2) {
-  --ink: #ffffff;
-  background-color: #033773;
-}
-
-main#main.contact-page > section:nth-of-type(3),
-main#main.contact-page > section:nth-of-type(5) {
-  --ink: #000000;
-  background-color: #f4f4f4;
-}
 
 main#main > section#evolution .section-eyebrow,
 main#main > section#evolution .section-heading,
@@ -150,4 +86,31 @@ main#main > section#evolution .carousel-dot.active {
 
 main#main > section#success-stories .success-stories-link {
   color: #000000;
+}
+
+/* ===== SECTION BACKGROUNDS =====
+   Each content section declares its colour with data-bg="white|blue|gray".
+   The colours cycle white -> blue -> gray in document order (set in the HTML),
+   so nothing here depends on classes, ids or :nth-of-type. Blue sections also
+   carry data-surface="dark" for the page stylesheets that key off it. */
+
+main > section[data-bg="white"] {
+  background-color: var(--section-background, #ffffff) !important;
+  --ink: #000000;
+}
+
+main > section[data-bg="blue"] {
+  background-color: var(--primary-blue, #033773) !important;
+  --ink: #ffffff;
+  color: var(--ink);
+}
+
+main > section[data-bg="gray"] {
+  background-color: var(--section-background-muted, #f4f4f4) !important;
+  --ink: #000000;
+}
+
+/* Sections nested inside another section take the parent's background and text colour */
+main section section {
+  background-color: transparent !important;
 }

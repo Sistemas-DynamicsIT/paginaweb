@@ -853,13 +853,14 @@ main > section:nth-child(10) :where(h1, h2, h3, h4, h5, h6, p, a, li, dt, dd, sp
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   margin-top: 2.5rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--section-background-muted);
 }
 
 .ecosystem-card {
   min-height: 13rem;
   padding: 1.5rem;
-  background: var(--primary-blue);
+  background: var(--section-background-muted);
+  --ink: #000000;
 }
 
 .ecosystem-number {
