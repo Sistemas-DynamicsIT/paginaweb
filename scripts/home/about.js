@@ -1,11 +1,3 @@
-function normalizeAssetPaths() {
-  document.querySelectorAll('img[src^="../../assets/"]').forEach((image) => {
-    image.src = image.getAttribute('src').replace('../../assets/', './assets/');
-  });
-}
-
-normalizeAssetPaths();
-
 // Our story.
 class AboutTabs {
   constructor() {
@@ -179,200 +171,80 @@ if (document.querySelector('.overview-tabs-container') || document.querySelector
   new AboutTabs();
 }
 
-// Recognition section.
-// AboutCarousel manages the achievements carousel.
+// Evolution carousel.
 class AboutCarousel {
-  constructor() {
+  constructor(carousel) {
+    this.carousel = carousel;
+    this.track = carousel.querySelector('.achievements-container');
+    this.viewport = carousel.querySelector('.achievements-viewport');
+    this.cards = this.track ? Array.from(this.track.querySelectorAll('.achievement-card')) : [];
+    this.controls = carousel.querySelector('.carousel-controls');
+    this.status = carousel.querySelector('.carousel-status');
+    this.prevBtn = carousel.querySelector('.carousel-btn.prev');
+    this.nextBtn = carousel.querySelector('.carousel-btn.next');
+    this.currentIndex = 0;
+    this.cardsPerSlide = this.getCardsPerSlide();
+
     this.init();
   }
 
-  init() {
-    this.initAchievementsCarousel();
-  }
-
   getCardsPerSlide() {
-    return window.innerWidth <= 480 ? 1 : 2;
+    return window.matchMedia('(max-width: 767px)').matches ? 1 : 2;
   }
 
-  initAchievementsCarousel() {
-    const carousel = document.querySelector('.achievements-container');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    const cards = carousel ? carousel.querySelectorAll('.achievement-card') : [];
-    const carouselTrack = document.querySelector('.achievements-carousel');
+  init() {
+    if (
+      !this.track || !this.viewport || !this.controls || !this.status ||
+      !this.prevBtn || !this.nextBtn || this.cards.length === 0
+    ) return;
 
-    if (!carousel || cards.length === 0) return;
+    this.prevBtn.addEventListener('click', () => this.goToSlide(this.currentIndex - 1));
+    this.nextBtn.addEventListener('click', () => this.goToSlide(this.currentIndex + 1));
+    window.addEventListener('resize', () => this.update());
 
-    if (!carouselTrack.dataset.currentIndex) {
-      carouselTrack.dataset.currentIndex = '0';
-    }
-
-    const calculateMaxIndex = () => {
-      return Math.max(0, Math.ceil(cards.length / this.getCardsPerSlide()) - 1);
-    };
-
-    const getCardStep = () => {
-      const gap = parseFloat(window.getComputedStyle(carousel).gap) || 0;
-      return cards[0].offsetWidth + gap;
-    };
-
-    let maxIndex = calculateMaxIndex();
-    const carouselController = this;
-
-    const updateCarousel = () => {
-      const currentIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-      carousel.style.transform = `translateX(-${currentIndex * this.getCardsPerSlide() * getCardStep()}px)`;
-
-      updateButtonStates();
-      carouselController.updateIndicators(currentIndex);
-
-      if (currentIndex >= maxIndex) {
-        carouselTrack.classList.add('at-end');
-        if (nextBtn) {
-          nextBtn.setAttribute('tabindex', '-1');
-        }
-      } else {
-        carouselTrack.classList.remove('at-end');
-        if (nextBtn) {
-          nextBtn.setAttribute('tabindex', '0');
-        }
-      }
-    };
-
-    const updateButtonStates = () => {
-      const currentIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-      if (prevBtn) {
-        prevBtn.disabled = currentIndex === 0;
-        prevBtn.setAttribute('aria-disabled', (currentIndex === 0).toString());
-        prevBtn.classList.toggle('disabled', currentIndex === 0);
-      }
-      if (nextBtn) {
-        nextBtn.disabled = currentIndex >= maxIndex;
-        nextBtn.setAttribute('aria-disabled', (currentIndex >= maxIndex).toString());
-        nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
-      }
-    };
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        let currentIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-        if (currentIndex < maxIndex) {
-          currentIndex++;
-          carouselTrack.dataset.currentIndex = currentIndex.toString();
-          updateCarousel();
-        }
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        let currentIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-        if (currentIndex > 0) {
-          currentIndex--;
-          carouselTrack.dataset.currentIndex = currentIndex.toString();
-          updateCarousel();
-        }
-      });
-    }
-
-    window.addEventListener('resize', () => {
-      maxIndex = calculateMaxIndex();
-      let currentIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-      if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
-        carouselTrack.dataset.currentIndex = currentIndex.toString();
-      }
-      this.createIndicators();
-      updateCarousel();
-    });
-
-    this.createIndicators();
-    updateCarousel();
+    this.carousel.classList.add('is-ready');
+    this.viewport.removeAttribute('tabindex');
+    this.controls.hidden = false;
+    this.update();
   }
 
-  createIndicators() {
-    const carouselTrack = document.querySelector('.achievements-carousel');
-    const carousel = carouselTrack ? carouselTrack.querySelector('.achievements-container') : null;
-    const cards = carousel ? carousel.querySelectorAll('.achievement-card') : [];
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-
-    if (!carouselTrack || !carousel || !indicatorsContainer || cards.length === 0) return;
-
-    indicatorsContainer.innerHTML = '';
-
-    const maxIndex = Math.max(0, Math.ceil(cards.length / this.getCardsPerSlide()) - 1);
-
-    for (let i = 0; i <= maxIndex; i++) {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
-
-      const currentCarouselIndex = parseInt(carouselTrack.dataset.currentIndex || '0', 10);
-      if (i === currentCarouselIndex) dot.classList.add('active');
-
-      dot.addEventListener('click', () => {
-        this.goToSlide(i);
-      });
-
-      indicatorsContainer.appendChild(dot);
-    }
+  getMaxIndex() {
+    return Math.max(0, this.cards.length - this.cardsPerSlide);
   }
 
   goToSlide(index) {
-    const carousel = document.querySelector('.achievements-container');
-    const cards = carousel ? carousel.querySelectorAll('.achievement-card') : [];
-    const carouselTrack = document.querySelector('.achievements-carousel');
-
-    if (!carousel || cards.length === 0) return;
-
-    const gap = parseFloat(window.getComputedStyle(carousel).gap) || 0;
-    const cardStep = cards[0].offsetWidth + gap;
-    carousel.style.transform = `translateX(-${index * this.getCardsPerSlide() * cardStep}px)`;
-
-    this.updateIndicators(index);
-
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-
-    const maxIndex = Math.max(0, Math.ceil(cards.length / this.getCardsPerSlide()) - 1);
-
-    if (prevBtn) {
-      prevBtn.disabled = index === 0;
-      prevBtn.setAttribute('aria-disabled', (index === 0).toString());
-      prevBtn.classList.toggle('disabled', index === 0);
-      prevBtn.setAttribute('tabindex', index === 0 ? '-1' : '0');
-    }
-
-    if (nextBtn) {
-      nextBtn.disabled = index >= maxIndex;
-      nextBtn.setAttribute('aria-disabled', (index >= maxIndex).toString());
-      nextBtn.classList.toggle('disabled', index >= maxIndex);
-      nextBtn.setAttribute('tabindex', index >= maxIndex ? '-1' : '0');
-    }
-
-    carouselTrack.dataset.currentIndex = index.toString();
-
-    if (index >= maxIndex) {
-      carouselTrack.classList.add('at-end');
-    } else {
-      carouselTrack.classList.remove('at-end');
-    }
+    this.currentIndex = Math.max(0, Math.min(index, this.getMaxIndex()));
+    this.update();
   }
 
-  updateIndicators(activeIndex) {
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
-    const dots = indicatorsContainer ? indicatorsContainer.querySelectorAll('.carousel-dot') : [];
-    dots.forEach((dot, index) => {
-      if (index === activeIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
+  update() {
+    if (!this.track || this.cards.length === 0) return;
+
+    this.cardsPerSlide = this.getCardsPerSlide();
+    this.currentIndex = Math.min(this.currentIndex, this.getMaxIndex());
+
+    const gap = parseFloat(window.getComputedStyle(this.track).gap) || 0;
+    const cardStep = this.cards[0].getBoundingClientRect().width + gap;
+    this.track.style.transform = `translate3d(-${this.currentIndex * cardStep}px, 0, 0)`;
+
+    if (this.prevBtn) this.prevBtn.disabled = this.currentIndex === 0;
+    if (this.nextBtn) this.nextBtn.disabled = this.currentIndex >= this.getMaxIndex();
+
+    const lastVisible = Math.min(this.currentIndex + this.cardsPerSlide, this.cards.length);
+    this.cards.forEach((card, index) => {
+      card.setAttribute('aria-hidden', String(index < this.currentIndex || index >= lastVisible));
     });
+
+    if (this.status) {
+      const first = String(this.currentIndex + 1).padStart(2, '0');
+      const last = String(lastVisible).padStart(2, '0');
+      const total = String(this.cards.length).padStart(2, '0');
+      this.status.textContent = this.cardsPerSlide === 1
+        ? `Hito ${first} de ${total}`
+        : `Hitos ${first}–${last} de ${total}`;
+    }
   }
 }
 
 // Initialize the carousel when it is present.
-if (document.querySelector('.achievements-carousel')) {
-  new AboutCarousel();
-}
+document.querySelectorAll('#evolution .achievements-carousel').forEach((carousel) => new AboutCarousel(carousel));

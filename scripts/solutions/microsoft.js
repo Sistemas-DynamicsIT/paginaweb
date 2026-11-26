@@ -100,7 +100,7 @@ function changeMethodologyImage(imageId) {
  * Assigns random background images to desktop and mobile image containers.
  */
 function populateRandomProductImages() {
-  const basePath = './assets/images/products/';
+  const basePath = '/assets/images/products/';
   const productImages = Array.from({ length: 12 }, (_, i) => basePath + `image${i + 1}.jpg`);
 
   // Desktop image containers.
@@ -119,12 +119,6 @@ function populateRandomProductImages() {
     box.style.backgroundImage = `url('${img}')`;
     box.style.backgroundSize = 'cover';
     box.style.backgroundPosition = 'center';
-  });
-}
-
-function normalizeAssetPaths() {
-  document.querySelectorAll('img[src^="../../assets/"]').forEach((image) => {
-    image.src = image.getAttribute('src').replace('../../assets/', './assets/');
   });
 }
 
@@ -190,8 +184,6 @@ function initLicenseFilters() {
 }
 
 function initProductsPage() {
-  normalizeAssetPaths();
-
   if (document.querySelector('.methodology-accordion-header')) {
     initializeMethodology();
   }

@@ -2,8 +2,8 @@ const CASE_DATA = {
   modal1: {
     title: 'Mario Hernández',
     category: 'Comercio minorista · Automatización',
-    image: './assets/images/products/image1.jpg',
-    logo: './assets/images/products/modal1.jpg',
+    image: '/assets/images/products/image1.jpg',
+    logo: '/assets/images/products/modal1.jpg',
     characteristics:
       'Organización de comercio minorista con equipos de ventas y administración que necesitan información conectada para respaldar las operaciones diarias.',
     challenge:
@@ -20,8 +20,8 @@ const CASE_DATA = {
   modal2: {
     title: 'AngloGold Ashanti',
     category: 'Minería · Análisis de datos',
-    image: './assets/images/products/image2.jpg',
-    logo: './assets/images/products/modal2.jpg',
+    image: '/assets/images/products/image2.jpg',
+    logo: '/assets/images/products/modal2.jpg',
     characteristics:
       'Operación minera regional con fuentes de información distribuidas y equipos que necesitan métricas operativas confiables.',
     challenge:
@@ -39,8 +39,8 @@ const CASE_DATA = {
   modal3: {
     title: 'Scania',
     category: 'Manufactura · Automatización',
-    image: './assets/images/products/image3.jpg',
-    logo: './assets/images/products/modal3.jpg',
+    image: '/assets/images/products/image3.jpg',
+    logo: '/assets/images/products/modal3.jpg',
     characteristics:
       'Empresa de manufactura con procesos de campo y equipos operativos que necesitan registrar y consultar información de manera coherente.',
     challenge: 'Digitalizar los flujos de trabajo operativos y simplificar el seguimiento de actividades para los equipos involucrados.',
@@ -56,8 +56,8 @@ const CASE_DATA = {
   modal4: {
     title: 'Construcciones Cyes',
     category: 'Construcción · Análisis de datos',
-    image: './assets/images/products/image4.jpg',
-    logo: './assets/images/products/modal1.jpg',
+    image: '/assets/images/products/image4.jpg',
+    logo: '/assets/images/products/modal1.jpg',
     characteristics:
       'Empresa de construcción con proyectos simultáneos y equipos multidisciplinarios que coordinan datos, actividades y entregables.',
     challenge:
@@ -74,8 +74,8 @@ const CASE_DATA = {
   modal5: {
     title: 'Real Madrid',
     category: 'Servicios · Análisis de datos',
-    image: './assets/images/products/image5.jpg',
-    logo: './assets/images/products/modal2.jpg',
+    image: '/assets/images/products/image5.jpg',
+    logo: '/assets/images/products/modal2.jpg',
     characteristics:
       'Organización de servicios con equipos de negocio que necesitan métricas claras para orientar conversaciones y decisiones de gestión.',
     challenge: 'Poner métricas de negocio a disposición para orientar conversaciones y decisiones.',
@@ -88,8 +88,8 @@ const CASE_DATA = {
   modal6: {
     title: 'CineBank',
     category: 'Servicios · Infraestructura',
-    image: './assets/images/products/image6.jpg',
-    logo: './assets/images/products/modal3.jpg',
+    image: '/assets/images/products/image6.jpg',
+    logo: '/assets/images/products/modal3.jpg',
     characteristics:
       'Empresa de servicios en crecimiento que busca una base tecnológica conectada para estructurar y ampliar sus operaciones.',
     challenge: 'Estandarizar la gestión de la información y conectar las herramientas que respaldan las operaciones.',
@@ -105,25 +105,19 @@ const CASE_DATA = {
 };
 
 const PRODUCT_ICONS = {
-  'Excel Online': './assets/icons/ui/microsoft365/Excel.svg',
-  'Power BI': './assets/icons/ui/powerplataform/PowerBI.svg',
-  'Power Automate': './assets/icons/ui/powerplataform/PowerAutomate.svg',
-  'Power Apps': './assets/icons/ui/powerplataform/PowerApps.svg',
-  'Microsoft Fabric': './assets/icons/ui/microsoft365/fabric.svg',
-  Azure: './assets/icons/ui/microsoft365/Microsoft.png',
-  'Dynamics 365': './assets/icons/ui/dynamics365/Dynamics365.svg',
+  'Excel Online': '/assets/icons/ui/microsoft365/Excel.svg',
+  'Power BI': '/assets/icons/ui/powerplataform/PowerBI.svg',
+  'Power Automate': '/assets/icons/ui/powerplataform/PowerAutomate.svg',
+  'Power Apps': '/assets/icons/ui/powerplataform/PowerApps.svg',
+  'Microsoft Fabric': '/assets/icons/ui/microsoft365/fabric.svg',
+  Azure: '/assets/icons/ui/microsoft365/Microsoft.png',
+  'Dynamics 365': '/assets/icons/ui/dynamics365/Dynamics365.svg',
 };
 
 function productMarkup(product, className) {
   const icon = PRODUCT_ICONS[product];
   const iconMarkup = icon ? `<img src="${icon}" alt="" aria-hidden="true" />` : '';
   return `<span class="${className}">${iconMarkup}<span>${product}</span></span>`;
-}
-
-function normalizeAssetPaths() {
-  document.querySelectorAll('img[src^="../../assets/"]').forEach((image) => {
-    image.src = image.getAttribute('src').replace('../../assets/', './assets/');
-  });
 }
 
 function renderCardProducts() {
@@ -312,7 +306,6 @@ function initModal() {
 }
 
 function initStories() {
-  normalizeAssetPaths();
   renderCardProducts();
   initCaseExplorer();
   initModal();

@@ -516,21 +516,19 @@
         <div class="section-container">
           <p class="section-eyebrow">NUESTRA EVOLUCIÓN</p>
           <h2 class="section-heading">Hitos que cuentan nuestra historia</h2>
-          <div class="achievements-carousel">
-            <button class="carousel-btn prev" aria-label="Anterior">
-              <svg class="carousel-btn-icon" viewBox="0 0 24 24">
-                <path d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <button class="carousel-btn next" aria-label="Siguiente">
-              <svg class="carousel-btn-icon" viewBox="0 0 24 24">
-                <path d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-            <div class="achievements-viewport">
+          <p class="evolution-intro">
+            Cada etapa nos ha permitido aprender, crecer y acompañar mejor la transformación de nuestros clientes.
+          </p>
+          <div
+            class="achievements-carousel"
+            role="region"
+            aria-roledescription="carrusel"
+            aria-label="Hitos de nuestra evolución">
+            <div class="achievements-viewport" role="group" aria-label="Hitos" tabindex="0">
               <div class="achievements-container">
                 <article class="achievement-card">
                   <div class="achievement-card-inner">
+                    <span class="achievement-step" aria-hidden="true">01</span>
                     <h3>Nuestros inicios</h3>
                     <p>
                       Nacimos para acercar la tecnología empresarial a las necesidades reales de cada organización. La
@@ -540,6 +538,7 @@
                 </article>
                 <article class="achievement-card">
                   <div class="achievement-card-inner">
+                    <span class="achievement-step" aria-hidden="true">02</span>
                     <h3>Primeros desafíos</h3>
                     <p>
                       Los primeros proyectos consolidaron un enfoque colaborativo y nos enseñaron a adaptar la
@@ -549,6 +548,7 @@
                 </article>
                 <article class="achievement-card">
                   <div class="achievement-card-inner">
+                    <span class="achievement-step" aria-hidden="true">03</span>
                     <h3>Expansión regional</h3>
                     <p>
                       La expansión por América Latina amplió nuestra perspectiva y fortaleció el trabajo entre clientes,
@@ -558,6 +558,7 @@
                 </article>
                 <article class="achievement-card">
                   <div class="achievement-card-inner">
+                    <span class="achievement-step" aria-hidden="true">04</span>
                     <h3>Nuevas capacidades</h3>
                     <p>
                       Ampliamos capacidades en Dynamics 365, Microsoft 365, Power Platform, datos e inteligencia
@@ -567,6 +568,7 @@
                 </article>
                 <article class="achievement-card">
                   <div class="achievement-card-inner">
+                    <span class="achievement-step" aria-hidden="true">05</span>
                     <h3>Hoy</h3>
                     <p>
                       Hoy conectamos personas, procesos y datos para optimizar operaciones, apoyar mejores decisiones y
@@ -576,7 +578,21 @@
                 </article>
               </div>
             </div>
-            <div class="carousel-indicators"></div>
+            <div class="carousel-controls" hidden>
+              <p class="carousel-status" aria-live="polite" aria-atomic="true"></p>
+              <div class="carousel-buttons">
+                <button class="carousel-btn prev" type="button" aria-label="Ver hitos anteriores">
+                  <svg class="carousel-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                </button>
+                <button class="carousel-btn next" type="button" aria-label="Ver siguientes hitos">
+                  <svg class="carousel-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
 
           <h3 class="section-subtitle-centered">Una trayectoria que seguimos construyendo</h3>
